@@ -1,0 +1,78 @@
+{
+  "python": [
+    "python",
+    "programação",
+    "linguagem",
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "scikit",
+    "automação",
+    "script"
+  ],
+
+ "sql": [
+  "sql",
+  "banco de dados",
+  "consulta",
+  "select",
+  "join",
+  "juntar tabelas",
+  "combinar tabelas",
+  "unir tabelas",
+  "relacionar tabelas",
+  "clientes e pedidos",
+  "join com group by",
+  "total de compras por cliente",
+  "somar compras por cliente",
+  "agrupar pedidos por cliente",
+  "where",
+  "group by",
+  "sum",
+  "order by",
+  "tabela",
+  "mysql",
+  "postgresql"
+],
+
+  "powerbi": [
+    "power bi",
+    "dashboard",
+    "relatório",
+    "gráfico",
+    "visualização",
+    "dax",
+    "business intelligence"
+  ],
+
+  "excel": [
+    "excel",
+    "planilha",
+    "fórmula",
+    "procv",
+    "procx",
+    "tabela dinâmica",
+    "gráfico"
+  ],
+
+  "estatistica": [
+    "estatística",
+    "média",
+    "mediana",
+    "moda",
+    "desvio padrão",
+    "probabilidade",
+    "distribuição"
+  ],
+
+  "machine_learning": [
+    "machine learning",
+    "inteligência artificial",
+    "ia",
+    "modelo",
+    "algoritmo",
+    "treinamento",
+    "classificação",
+    "regressão"
+  ]
+}
