@@ -45,7 +45,7 @@ O modelo semântico utilizado é `paraphrase-multilingual-MiniLM-L12-v2`.
 
 ## Estrutura do projeto
 
-```text
+text
 data-mentor-ai/
 ├── data/                       # Base educacional em Markdown
 │   ├── sql.md
@@ -72,16 +72,16 @@ data-mentor-ai/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
-```
+
 
 ## Instalação
 
 ### 1. Clonar o repositório
 
-```bash
+bash
 git clone URL_DO_REPOSITORIO
 cd data-mentor-ai
-```
+
 
 Substitua `URL_DO_REPOSITORIO` pelo endereço apresentado no GitHub.
 
@@ -89,24 +89,24 @@ Substitua `URL_DO_REPOSITORIO` pelo endereço apresentado no GitHub.
 
 No Windows PowerShell:
 
-```powershell
+powershell
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-```
+
 
 No Linux ou macOS:
 
-```bash
+bash
 python3 -m venv .venv
 source .venv/bin/activate
-```
+
 
 ### 3. Instalar as dependências
 
-```bash
+bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-```
+
 
 Na primeira execução, o modelo de embeddings será baixado automaticamente. Esse processo pode demorar alguns minutos.
 
@@ -114,44 +114,44 @@ Na primeira execução, o modelo de embeddings será baixado automaticamente. Es
 
 Na raiz do projeto:
 
-```bash
+bash
 python -m streamlit run src/app_streamlit.py
-```
+
 
 A interface normalmente ficará disponível em:
 
-```text
+text
 http://localhost:8501
-```
+
 
 ## Executar pelo terminal
 
-```bash
+bash
 python src/app.py
-```
+
 
 ## Executar os testes
 
-```bash
+bash
 python tests/validar_projeto.py
-```
+
 
 Resultado esperado:
 
-```text
+text
 RESULTADO: 35/35 testes aprovados (100.0%)
-```
+
 
 ## Exemplos de perguntas
 
-```text
+text
 Qual é a diferença entre INNER JOIN e LEFT JOIN?
 Como agrupar vendas por categoria no Pandas?
 Como calcular o percentual do total em DAX?
 Qual é a diferença entre PROCV e PROCX?
 Como identificar outliers usando o IQR?
 Qual é a diferença entre classificação e regressão?
-```
+
 
 ## Consulta em PDF
 
@@ -164,7 +164,7 @@ Quando o documento é um currículo, a aplicação também consegue apresentar f
 
 ## Como a resposta é selecionada
 
-```text
+text
 Pergunta do usuário
         ↓
 Classificação de intenção
@@ -176,7 +176,7 @@ Busca semântica por seção
 Relevancy Booster
         ↓
 Seleção do trecho e assuntos relacionados
-```
+
 
 ## Privacidade
 
