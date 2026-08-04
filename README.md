@@ -1,3 +1,7 @@
+## Demonstração online
+
+Acesse o projeto: [Data Mentor AI](https://data-mentor-ai-lucas.streamlit.app)
+
 # Data Mentor AI
 
 Assistente educacional para análise de dados, desenvolvido em Python e Streamlit. O projeto combina uma base de conhecimento em Markdown, busca semântica multilíngue, regras especializadas e classificação de intenção para responder perguntas sobre SQL, Python, Excel, Power BI, Estatística e Machine Learning.
