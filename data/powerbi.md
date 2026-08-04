@@ -27,12 +27,12 @@ Operações comuns:
 
 Exemplo em linguagem M:
 
-```powerquery
+powerquery
 Table.SelectRows(
     Vendas,
     each [Valor] > 1000
 )
-```
+
 
 ## Modelo de dados
 
@@ -50,9 +50,9 @@ Relacionamentos permitem que filtros de uma tabela sejam aplicados em outra.
 
 Exemplo:
 
-```text
+text
 Clientes[IdCliente] 1 ─── * Vendas[IdCliente]
-```
+
 
 Recomendações:
 
@@ -94,10 +94,10 @@ DAX é a linguagem utilizada para criar medidas, colunas calculadas e tabelas ca
 
 Uma medida simples:
 
-```dax
+dax
 Faturamento =
 SUM(Vendas[Valor])
-```
+
 
 DAX trabalha com o modelo de dados e responde aos filtros aplicados no relatório.
 
@@ -105,10 +105,10 @@ DAX trabalha com o modelo de dados e responde aos filtros aplicados no relatóri
 
 Medidas são cálculos avaliados conforme o contexto dos filtros do relatório.
 
-```dax
+dax
 Quantidade de Vendas =
 COUNTROWS(Vendas)
-```
+
 
 Medidas são recomendadas para indicadores, totais, médias, percentuais e comparações.
 
@@ -116,10 +116,10 @@ Medidas são recomendadas para indicadores, totais, médias, percentuais e compa
 
 Colunas calculadas são processadas linha por linha e ficam armazenadas no modelo.
 
-```dax
+dax
 Valor Total =
 Vendas[Quantidade] * Vendas[PrecoUnitario]
-```
+
 
 Use colunas calculadas quando o resultado precisar existir em cada linha. Para agregações e indicadores, prefira medidas.
 
@@ -136,47 +136,47 @@ Na maioria dos indicadores, prefira uma medida. Use uma coluna calculada quando 
 
 `SUM` soma os valores de uma coluna numérica.
 
-```dax
+dax
 Faturamento =
 SUM(Vendas[Valor])
-```
+
 
 ## AVERAGE
 
 `AVERAGE` calcula a média dos valores de uma coluna.
 
-```dax
+dax
 Valor Médio =
 AVERAGE(Vendas[Valor])
-```
+
 
 ## COUNTROWS
 
 `COUNTROWS` conta as linhas de uma tabela.
 
-```dax
+dax
 Quantidade de Pedidos =
 COUNTROWS(Vendas)
-```
+
 
 Para contar clientes diferentes:
 
-```dax
+dax
 Clientes Ativos =
 DISTINCTCOUNT(Vendas[IdCliente])
-```
+
 
 ## CALCULATE
 
 `CALCULATE` avalia uma expressão modificando o contexto de filtro.
 
-```dax
+dax
 Vendas São Paulo =
 CALCULATE(
     [Faturamento],
     Clientes[Estado] = "SP"
 )
-```
+
 
 Ele é uma das funções mais importantes de DAX e pode combinar medidas com filtros.
 
@@ -184,7 +184,7 @@ Ele é uma das funções mais importantes de DAX e pode combinar medidas com fil
 
 `FILTER` retorna uma tabela contendo somente as linhas que atendem a uma condição.
 
-```dax
+dax
 Vendas de Alto Valor =
 CALCULATE(
     [Faturamento],
@@ -193,7 +193,7 @@ CALCULATE(
         Vendas[Valor] > 1000
     )
 )
-```
+
 
 Use `FILTER` quando a condição precisar ser avaliada linha por linha ou for mais complexa.
 
@@ -203,10 +203,10 @@ O contexto de filtro é formado pelos filtros do relatório, pelas segmentaçõe
 
 Por exemplo, a medida:
 
-```dax
+dax
 Faturamento =
 SUM(Vendas[Valor])
-```
+
 
 mostra valores diferentes quando o relatório é filtrado por ano, produto, cliente ou região.
 
@@ -216,14 +216,14 @@ mostra valores diferentes quando o relatório é filtrado por ano, produto, clie
 
 `DIVIDE` realiza divisões e trata denominadores iguais a zero.
 
-```dax
+dax
 Ticket Médio =
 DIVIDE(
     [Faturamento],
     [Quantidade de Pedidos],
     0
 )
-```
+
 
 É preferível a utilizar diretamente o operador `/` em medidas.
 
@@ -231,7 +231,7 @@ DIVIDE(
 
 Para calcular a participação de cada categoria no total:
 
-```dax
+dax
 Percentual do Total =
 DIVIDE(
     [Faturamento],
@@ -240,7 +240,7 @@ DIVIDE(
         ALL(Produtos[Categoria])
     )
 )
-```
+
 
 `ALL` remove o filtro da categoria para obter o total geral.
 
@@ -248,7 +248,7 @@ DIVIDE(
 
 Uma tabela calendário é essencial para análises temporais.
 
-```dax
+dax
 Calendario =
 ADDCOLUMNS(
     CALENDAR(
@@ -259,7 +259,7 @@ ADDCOLUMNS(
     "Mes", MONTH([Date]),
     "Nome Mes", FORMAT([Date], "MMMM")
 )
-```
+
 
 Depois, relacione `Calendario[Date]` com a coluna de data da tabela de vendas.
 
@@ -269,29 +269,29 @@ Funções de inteligência temporal permitem comparar períodos.
 
 Vendas do ano anterior:
 
-```dax
+dax
 Faturamento Ano Anterior =
 CALCULATE(
     [Faturamento],
     SAMEPERIODLASTYEAR(Calendario[Date])
 )
-```
+
 
 Crescimento percentual:
 
-```dax
+dax
 Crescimento Percentual =
 DIVIDE(
     [Faturamento] - [Faturamento Ano Anterior],
     [Faturamento Ano Anterior]
 )
-```
+
 
 ## Acumulado
 
 Um acumulado soma os valores até a data atual do contexto.
 
-```dax
+dax
 Faturamento Acumulado =
 CALCULATE(
     [Faturamento],
@@ -300,31 +300,31 @@ CALCULATE(
         Calendario[Date] <= MAX(Calendario[Date])
     )
 )
-```
+
 
 ## Meta e atingimento
 
 Uma medida pode comparar o resultado com uma meta.
 
-```dax
+dax
 Percentual da Meta =
 DIVIDE(
     [Faturamento],
     [Meta de Faturamento],
     0
 )
-```
+
 
 Também é possível criar uma classificação:
 
-```dax
+dax
 Status da Meta =
 IF(
     [Percentual da Meta] >= 1,
     "Meta atingida",
     "Abaixo da meta"
 )
-```
+
 
 ## Publicação e atualização
 
