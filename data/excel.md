@@ -18,35 +18,35 @@ Transformar um intervalo em tabela facilita filtros, fórmulas e atualizações.
 
 Atalho:
 
-```text
+text
 Ctrl + T
-```
+
 
 As tabelas utilizam referências estruturadas:
 
-```excel
+excel
 =SOMA(Vendas[Valor])
-```
+
 
 ## Fórmulas
 
 Fórmulas começam com o sinal de igual.
 
-```excel
+excel
 =A2+B2
-```
+
 
 Referência relativa:
 
-```excel
+excel
 =A2*B2
-```
+
 
 Referência absoluta:
 
-```excel
+excel
 =A2*$F$1
-```
+
 
 O símbolo `$` mantém a referência fixa ao copiar a fórmula.
 
@@ -54,9 +54,9 @@ O símbolo `$` mantém a referência fixa ao copiar a fórmula.
 
 A função `SE` retorna um resultado conforme uma condição.
 
-```excel
+excel
 =SE(B2>=1000;"Meta atingida";"Abaixo da meta")
-```
+
 
 Ela possui três partes: condição, resultado verdadeiro e resultado falso.
 
@@ -64,23 +64,23 @@ Ela possui três partes: condição, resultado verdadeiro e resultado falso.
 
 `SEERRO` substitui mensagens de erro por um resultado definido.
 
-```excel
+excel
 =SEERRO(A2/B2;0)
-```
+
 
 Também pode ser combinada com funções de busca:
 
-```excel
+excel
 =SEERRO(PROCX(A2;Produtos[ID];Produtos[Nome]);"Não encontrado")
-```
+
 
 ## SOMASE
 
 `SOMASE` soma valores que atendem a um critério.
 
-```excel
+excel
 =SOMASE(A2:A100;"Sul";B2:B100)
-```
+
 
 Nesse exemplo, a fórmula soma os valores da coluna B quando a região da coluna A é Sul.
 
@@ -88,13 +88,13 @@ Nesse exemplo, a fórmula soma os valores da coluna B quando a região da coluna
 
 `SOMASES` soma valores utilizando vários critérios.
 
-```excel
+excel
 =SOMASES(
     Vendas[Valor];
     Vendas[Região];"Sul";
     Vendas[Ano];2026
 )
-```
+
 
 A primeira coluna é o intervalo da soma. Depois são informados os intervalos e critérios.
 
@@ -102,36 +102,36 @@ A primeira coluna é o intervalo da soma. Depois são informados os intervalos e
 
 `CONT.SE` conta células que atendem a um critério.
 
-```excel
+excel
 =CONT.SE(Clientes[Estado];"SC")
-```
+
 
 ## CONT.SES
 
 `CONT.SES` conta registros utilizando vários critérios.
 
-```excel
+excel
 =CONT.SES(
     Vendas[Região];"Sul";
     Vendas[Valor];">1000"
 )
-```
+
 
 ## MÉDIASE
 
 `MÉDIASE` calcula a média dos valores que atendem a um critério.
 
-```excel
+excel
 =MÉDIASE(Vendas[Categoria];"Eletrônicos";Vendas[Valor])
-```
+
 
 ## PROCV
 
 `PROCV` procura um valor na primeira coluna de uma tabela e retorna uma coluna à direita.
 
-```excel
+excel
 =PROCV(A2;Produtos!A:D;3;FALSO)
-```
+
 
 Limitações:
 
@@ -143,14 +143,14 @@ Limitações:
 
 `PROCX` é uma alternativa moderna e mais flexível ao `PROCV`.
 
-```excel
+excel
 =PROCX(
     A2;
     Produtos[ID];
     Produtos[Nome];
     "Não encontrado"
 )
-```
+
 
 Ela permite buscas em qualquer direção e possui tratamento para valores não encontrados.
 
@@ -167,12 +167,12 @@ Em versões recentes do Excel, prefira `PROCX` quando estiver disponível.
 
 `ÍNDICE` retorna um valor de uma posição, enquanto `CORRESP` encontra a posição de um item.
 
-```excel
+excel
 =ÍNDICE(
     Produtos[Nome];
     CORRESP(A2;Produtos[ID];0)
 )
-```
+
 
 Essa combinação é flexível e funciona em versões que não possuem `PROCX`.
 
@@ -182,27 +182,27 @@ Funções de texto ajudam a limpar e combinar informações.
 
 Remover espaços excedentes:
 
-```excel
+excel
 =ARRUMAR(A2)
-```
+
 
 Converter para maiúsculas:
 
-```excel
+excel
 =MAIÚSCULA(A2)
-```
+
 
 Unir textos:
 
-```excel
+excel
 =TEXTO.JUNTAR(" ";VERDADEIRO;A2;B2)
-```
+
 
 Extrair caracteres:
 
-```excel
+excel
 =ESQUERDA(A2;3)
-```
+
 
 ## Funções de data
 
@@ -210,34 +210,34 @@ Excel armazena datas como números e permite realizar cálculos.
 
 Data atual:
 
-```excel
+excel
 =HOJE()
-```
+
 
 Extrair ano e mês:
 
-```excel
+excel
 =ANO(A2)
 =MÊS(A2)
-```
+
 
 Calcular diferença em dias:
 
-```excel
+excel
 =B2-A2
-```
+
 
 ## FILTRO
 
 A função `FILTRO` retorna registros que atendem a uma condição.
 
-```excel
+excel
 =FILTRO(
     Vendas;
     Vendas[Região]="Sul";
     "Nenhum resultado"
 )
-```
+
 
 Ela está disponível em versões com matrizes dinâmicas.
 
@@ -245,15 +245,15 @@ Ela está disponível em versões com matrizes dinâmicas.
 
 `ÚNICO` retorna valores sem repetição.
 
-```excel
+excel
 =ÚNICO(Clientes[Cidade])
-```
+
 
 Pode ser combinado com `CLASSIFICAR`:
 
-```excel
+excel
 =CLASSIFICAR(ÚNICO(Clientes[Cidade]))
-```
+
 
 ## Formatação condicional
 
@@ -287,12 +287,12 @@ Tabela Dinâmica resume grandes volumes de dados sem exigir fórmulas complexas.
 
 Exemplo de configuração:
 
-```text
+text
 Linhas: Categoria
 Colunas: Ano
 Valores: Soma de Faturamento
 Filtros: Região
-```
+
 
 Boas práticas:
 
@@ -362,27 +362,27 @@ Exemplos de indicadores:
 
 Faturamento total:
 
-```excel
+excel
 =SOMA(Vendas[Valor])
-```
+
 
 Quantidade de vendas:
 
-```excel
+excel
 =CONT.NÚM(Vendas[IDVenda])
-```
+
 
 Ticket médio:
 
-```excel
+excel
 =SEERRO(
     SOMA(Vendas[Valor])/CONT.NÚM(Vendas[IDVenda]);
     0
 )
-```
+
 
 Atingimento da meta:
 
-```excel
+excel
 =SEERRO(Faturamento/Meta;0)
-```
+
