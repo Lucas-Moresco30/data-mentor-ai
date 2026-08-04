@@ -10,10 +10,10 @@ O comando SELECT é utilizado para consultar dados de uma ou mais tabelas.
 
 Exemplo:
 
-```sql
+sql
 SELECT nome, cidade
 FROM clientes;
-```
+
 
 ---
 
@@ -23,11 +23,11 @@ O comando WHERE é utilizado para filtrar registros de acordo com uma condição
 
 Exemplo:
 
-```sql
+sql
 SELECT nome, cidade
 FROM clientes
 WHERE cidade = 'Joaçaba';
-```
+
 
 ---
 
@@ -48,14 +48,14 @@ Os principais tipos de JOIN são:
 
 Exemplo:
 
-```sql
+sql
 SELECT
     clientes.nome,
     pedidos.valor
 FROM clientes
 INNER JOIN pedidos
     ON clientes.id = pedidos.cliente_id;
-```
+
 
 ---
 
@@ -63,14 +63,14 @@ INNER JOIN pedidos
 
 Exemplo:
 
-```sql
+sql
 SELECT
     clientes.nome,
     pedidos.valor
 FROM clientes
 LEFT JOIN pedidos
     ON clientes.id = pedidos.cliente_id;
-```
+
 
 ---
 
@@ -78,14 +78,14 @@ LEFT JOIN pedidos
 
 Exemplo:
 
-```sql
+sql
 SELECT
     clientes.nome,
     pedidos.valor
 FROM clientes
 RIGHT JOIN pedidos
     ON clientes.id = pedidos.cliente_id;
-```
+
 
 ---
 
@@ -93,14 +93,14 @@ RIGHT JOIN pedidos
 
 Exemplo:
 
-```sql
+sql
 SELECT
     clientes.nome,
     pedidos.valor
 FROM clientes
 FULL JOIN pedidos
     ON clientes.id = pedidos.cliente_id;
-```
+
 
 ---
 
@@ -110,13 +110,13 @@ GROUP BY agrupa registros iguais para permitir cálculos como soma, média, quan
 
 Exemplo:
 
-```sql
+sql
 SELECT
     cidade,
     COUNT(*) AS total_clientes
 FROM clientes
 GROUP BY cidade;
-```
+
 
 ---
 
@@ -126,13 +126,13 @@ ORDER BY organiza o resultado de uma consulta em ordem crescente ou decrescente.
 
 Exemplo:
 
-```sql
+sql
 SELECT
     nome,
     salario
 FROM funcionarios
 ORDER BY salario DESC;
-```
+
 
 ---
 
@@ -142,14 +142,14 @@ HAVING filtra grupos criados pelo GROUP BY.
 
 Exemplo:
 
-```sql
+sql
 SELECT
     cidade,
     COUNT(*) AS total_clientes
 FROM clientes
 GROUP BY cidade
 HAVING COUNT(*) > 10;
-```
+
 
 ---
 
@@ -167,11 +167,11 @@ Principais funções:
 
 Exemplo:
 
-```sql
+sql
 SELECT
     SUM(valor) AS faturamento
 FROM pedidos;
-```
+
 
 ---
 
@@ -181,7 +181,7 @@ JOIN pode ser combinado com GROUP BY para gerar relatórios.
 
 Exemplo:
 
-```sql
+sql
 SELECT
     clientes.nome,
     SUM(pedidos.valor) AS total_compras
@@ -190,7 +190,7 @@ INNER JOIN pedidos
     ON clientes.id = pedidos.cliente_id
 GROUP BY clientes.nome
 ORDER BY total_compras DESC;
-```
+
 
 Nesse exemplo:
 
@@ -207,7 +207,7 @@ Nesse exemplo:
 
 Exemplo:
 
-```sql
+sql
 SELECT
     clientes.nome,
     pedidos.valor
@@ -215,7 +215,7 @@ FROM clientes
 INNER JOIN pedidos
     ON clientes.id = pedidos.cliente_id
 WHERE pedidos.valor > 500;
-```
+
 
 ---
 
@@ -225,7 +225,7 @@ Também é possível combinar vários comandos em uma única consulta.
 
 Exemplo:
 
-```sql
+sql
 SELECT
     clientes.nome,
     SUM(pedidos.valor) AS total
@@ -235,4 +235,3 @@ INNER JOIN pedidos
 GROUP BY clientes.nome
 HAVING SUM(pedidos.valor) > 1000
 ORDER BY total DESC;
-```
