@@ -12,11 +12,11 @@ A média aritmética é calculada somando todos os valores e dividindo o resulta
 
 Exemplo:
 
-```python
+python
 valores = [10, 20, 30, 40]
 media = sum(valores) / len(valores)
 print(media)  # 25.0
-```
+
 
 A média é sensível a valores extremos.
 
@@ -28,12 +28,12 @@ Quando existe uma quantidade par de valores, ela é a média dos dois valores ce
 
 Exemplo:
 
-```python
+python
 from statistics import median
 
 valores = [10, 15, 20, 100]
 print(median(valores))  # 17.5
-```
+
 
 A mediana é indicada quando existem valores extremos ou distribuições assimétricas.
 
@@ -43,12 +43,12 @@ A moda é o valor que aparece com maior frequência.
 
 Exemplo:
 
-```python
+python
 from statistics import mode
 
 valores = [1, 2, 2, 3, 4]
 print(mode(valores))  # 2
-```
+
 
 Um conjunto pode não possuir moda ou pode possuir mais de uma moda.
 
@@ -68,13 +68,13 @@ A variância mede quanto os valores se afastam da média. Quanto maior a variân
 
 Exemplo:
 
-```python
+python
 import numpy as np
 
 valores = [10, 12, 14, 16]
 variancia = np.var(valores, ddof=1)
 print(variancia)
-```
+
 
 `ddof=1` calcula a variância amostral.
 
@@ -84,13 +84,13 @@ O desvio padrão mede a dispersão dos valores na mesma unidade dos dados origin
 
 Exemplo:
 
-```python
+python
 import numpy as np
 
 valores = [10, 12, 14, 16]
 desvio = np.std(valores, ddof=1)
 print(desvio)
-```
+
 
 Um desvio padrão pequeno indica valores mais próximos da média.
 
@@ -121,12 +121,12 @@ Quartis dividem os dados ordenados em quatro partes. Percentis dividem os dados 
 
 Exemplo:
 
-```python
+python
 import numpy as np
 
 valores = [10, 20, 30, 40, 50]
 q1, q2, q3 = np.percentile(valores, [25, 50, 75])
-```
+
 
 ## Outliers
 
@@ -134,7 +134,7 @@ Outliers são valores muito distantes do comportamento predominante dos dados.
 
 Uma forma comum de identificá-los utiliza o intervalo interquartil, chamado IQR.
 
-```python
+python
 q1 = df["valor"].quantile(0.25)
 q3 = df["valor"].quantile(0.75)
 iqr = q3 - q1
@@ -146,7 +146,7 @@ outliers = df[
     (df["valor"] < limite_inferior)
     | (df["valor"] > limite_superior)
 ]
-```
+
 
 Um outlier deve ser investigado antes de ser removido, pois pode representar erro ou informação importante.
 
@@ -160,10 +160,10 @@ O coeficiente varia de -1 a 1:
 - próximo de -1: relação negativa forte;
 - próximo de 0: pouca relação linear.
 
-```python
+python
 correlacao = df["investimento"].corr(df["vendas"])
 print(correlacao)
-```
+
 
 Correlação não significa causalidade.
 
@@ -179,9 +179,9 @@ Probabilidade representa a chance de um evento acontecer e varia entre 0 e 1, ou
 
 Para eventos igualmente prováveis:
 
-```text
+text
 probabilidade = casos favoráveis / total de casos possíveis
-```
+
 
 Exemplo: a probabilidade de obter um número par em um dado comum é 3/6, ou 50%.
 
@@ -213,9 +213,9 @@ O erro padrão estima quanto uma estatística amostral, como a média, varia ent
 
 Ele diminui quando o tamanho da amostra aumenta.
 
-```text
+text
 erro padrão = desvio padrão / raiz quadrada do tamanho da amostra
-```
+
 
 ## Intervalo de confiança
 
@@ -244,9 +244,9 @@ Estatística descritiva resume os dados observados por meio de tabelas, gráfico
 
 Exemplo com Pandas:
 
-```python
+python
 print(df.describe())
-```
+
 
 ## Estatística inferencial
 
