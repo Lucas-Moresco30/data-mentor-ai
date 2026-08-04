@@ -28,13 +28,13 @@ Exemplos:
 - transação é fraude ou não fraude;
 - mensagem é spam ou não spam.
 
-```python
+python
 from sklearn.linear_model import LogisticRegression
 
 modelo = LogisticRegression()
 modelo.fit(X_treino, y_treino)
 previsoes = modelo.predict(X_teste)
-```
+
 
 ## Regressão
 
@@ -42,13 +42,13 @@ Regressão é utilizada quando a resposta que queremos prever é um valor numér
 
 Exemplos: preço de um imóvel, faturamento futuro e tempo de entrega.
 
-```python
+python
 from sklearn.linear_model import LinearRegression
 
 modelo = LinearRegression()
 modelo.fit(X_treino, y_treino)
 previsoes = modelo.predict(X_teste)
-```
+
 
 ## Classificação e regressão
 
@@ -65,16 +65,16 @@ Variáveis preditoras, geralmente representadas por `X`, são as informações u
 
 A variável-alvo, geralmente representada por `y`, é a resposta que desejamos prever.
 
-```python
+python
 X = df[["idade", "renda", "tempo_cliente"]]
 y = df["cancelou"]
-```
+
 
 ## Separação entre treino e teste
 
 Os dados de treino são usados para ajustar o modelo. Os dados de teste são reservados para avaliar seu desempenho em exemplos que não participaram do treinamento.
 
-```python
+python
 from sklearn.model_selection import train_test_split
 
 X_treino, X_teste, y_treino, y_teste = train_test_split(
@@ -84,7 +84,7 @@ X_treino, X_teste, y_treino, y_teste = train_test_split(
     random_state=42,
     stratify=y
 )
-```
+
 
 Não se deve avaliar o resultado final somente nos dados de treino.
 
@@ -98,13 +98,13 @@ O pré-processamento deve ser ajustado apenas com os dados de treino para evitar
 
 Padronização transforma variáveis numéricas para que apresentem média próxima de zero e desvio padrão próximo de um.
 
-```python
+python
 from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
 X_treino_escalado = scaler.fit_transform(X_treino)
 X_teste_escalado = scaler.transform(X_teste)
-```
+
 
 Ela é especialmente importante para algoritmos sensíveis à escala, como KNN e regressão logística.
 
@@ -112,13 +112,13 @@ Ela é especialmente importante para algoritmos sensíveis à escala, como KNN e
 
 Variáveis categóricas precisam ser convertidas em números para muitos algoritmos.
 
-```python
+python
 dados = pd.get_dummies(
     df,
     columns=["estado", "categoria"],
     drop_first=True
 )
-```
+
 
 Uma alternativa profissional é usar `OneHotEncoder` dentro de um pipeline.
 
@@ -126,7 +126,7 @@ Uma alternativa profissional é usar `OneHotEncoder` dentro de um pipeline.
 
 Pipeline reúne pré-processamento e modelo em uma única sequência. Isso reduz erros e evita aplicar transformações diferentes nos dados de treino e teste.
 
-```python
+python
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
@@ -138,7 +138,7 @@ pipeline = Pipeline([
 
 pipeline.fit(X_treino, y_treino)
 previsoes = pipeline.predict(X_teste)
-```
+
 
 ## Overfitting
 
@@ -167,11 +167,11 @@ O objetivo é encontrar um equilíbrio que permita boa generalização.
 
 Acurácia é a proporção de previsões corretas em um problema de classificação.
 
-```python
+python
 from sklearn.metrics import accuracy_score
 
 acuracia = accuracy_score(y_teste, previsoes)
-```
+
 
 Ela pode ser enganosa quando as classes estão muito desbalanceadas.
 
@@ -181,11 +181,11 @@ Precisão responde: entre os registros previstos como positivos, quantos realmen
 
 Ela é importante quando falsos positivos têm custo elevado.
 
-```python
+python
 from sklearn.metrics import precision_score
 
 precisao = precision_score(y_teste, previsoes)
-```
+
 
 ## Recall
 
@@ -193,11 +193,11 @@ Recall, também chamado de sensibilidade, responde: entre todos os casos realmen
 
 Ele é importante quando deixar de identificar um caso positivo tem custo elevado.
 
-```python
+python
 from sklearn.metrics import recall_score
 
 recall = recall_score(y_teste, previsoes)
-```
+
 
 ## Precisão e recall
 
@@ -210,22 +210,22 @@ Precisão avalia a confiabilidade das previsões positivas. Recall avalia a capa
 
 F1-score é a média harmônica entre precisão e recall. Ele é útil quando se deseja equilibrar as duas métricas.
 
-```python
+python
 from sklearn.metrics import f1_score
 
 f1 = f1_score(y_teste, previsoes)
-```
+
 
 ## Matriz de confusão
 
 A matriz de confusão mostra acertos e erros de um modelo de classificação por meio de verdadeiros positivos, verdadeiros negativos, falsos positivos e falsos negativos.
 
-```python
+python
 from sklearn.metrics import confusion_matrix
 
 matriz = confusion_matrix(y_teste, previsoes)
 print(matriz)
-```
+
 
 ## Métricas de classificação
 
@@ -233,32 +233,32 @@ As principais métricas de classificação são acurácia, precisão, recall, F1
 
 A métrica adequada depende do objetivo do problema e do custo de cada tipo de erro.
 
-```python
+python
 from sklearn.metrics import classification_report
 
 print(classification_report(y_teste, previsoes))
-```
+
 
 ## MAE
 
 MAE é o erro absoluto médio entre os valores reais e previstos em uma regressão. Ele é expresso na mesma unidade da variável-alvo.
 
-```python
+python
 from sklearn.metrics import mean_absolute_error
 
 mae = mean_absolute_error(y_teste, previsoes)
-```
+
 
 ## MSE e RMSE
 
 MSE calcula a média dos erros elevados ao quadrado. RMSE é a raiz quadrada do MSE e volta à unidade original da variável-alvo.
 
-```python
+python
 from sklearn.metrics import mean_squared_error
 
 mse = mean_squared_error(y_teste, previsoes)
 rmse = mean_squared_error(y_teste, previsoes) ** 0.5
-```
+
 
 Essas métricas penalizam erros grandes com maior intensidade.
 
@@ -266,11 +266,11 @@ Essas métricas penalizam erros grandes com maior intensidade.
 
 R² indica a proporção da variação da variável-alvo explicada pelo modelo de regressão.
 
-```python
+python
 from sklearn.metrics import r2_score
 
 r2 = r2_score(y_teste, previsoes)
-```
+
 
 Um R² maior não garante que o modelo seja adequado; os resíduos e o contexto também devem ser avaliados.
 
@@ -286,7 +286,7 @@ As principais métricas de regressão são MAE, MSE, RMSE e R².
 
 Validação cruzada divide os dados em várias partes e repete o treinamento e a avaliação. Isso produz uma estimativa mais estável do desempenho.
 
-```python
+python
 from sklearn.model_selection import cross_val_score
 
 scores = cross_val_score(
@@ -298,7 +298,7 @@ scores = cross_val_score(
 )
 
 print(scores.mean())
-```
+
 
 ## Hiperparâmetros
 
@@ -322,12 +322,12 @@ Nessa situação, avalie precisão, recall, F1-score e matriz de confusão, em v
 
 Clusterização é uma técnica não supervisionada que agrupa registros semelhantes sem utilizar uma variável-alvo conhecida.
 
-```python
+python
 from sklearn.cluster import KMeans
 
 modelo = KMeans(n_clusters=3, random_state=42)
 grupos = modelo.fit_predict(X)
-```
+
 
 O número e a interpretação dos grupos devem ser avaliados no contexto do problema.
 
